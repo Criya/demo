@@ -23,6 +23,7 @@ for (var i = 0; i < keys.length; i++) {
 /*监听用户按下按键然后打开对应的网站*/
 document.onkeypress = function (kbdPress) {
     key = kbdPress.key
-    website = 'http://' + hash[key]
-    window.open(website, '_blank')
+    /*只打开保存了的网站*/
+    if(website = hash[key])
+        window.open('http://'+website, '_blank')
 }
