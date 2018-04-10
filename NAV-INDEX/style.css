@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+main{
+    text-align: center;
+}
+.wrapper{
+    display: inline-block;
+}
+
+kbd{
+    border: solid 1px red;
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+}
