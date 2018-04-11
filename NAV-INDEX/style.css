@@ -15,7 +15,19 @@ main{
 
 kbd{
     border: solid 1px red;
-    width: 2em;
-    height: 2em;
+    width: 4em;
+    height: 4em;
+    display: inline-block;
+    position: relative;
+}
+
+kbd > button{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+kbd:hover > button{
     display: inline-block;
 }

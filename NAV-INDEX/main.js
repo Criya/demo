@@ -15,7 +15,19 @@ for (var i = 0; i < keys.length; i++) {
     for (var j = 0; j < rows.length; j++) {
         kbd1 = document.createElement('kbd')
         kbd1.textContent = rows[j]
+        /*添加编辑按键*/
+        butEdit = document.createElement('button')
+        butEdit.textContent = '编辑'
+        butEdit.id = rows[j]
+        kbd1.appendChild(butEdit)
         div1.appendChild(kbd1)
+        /*实现编辑功能*/
+        butEdit.onclick = function (butEditPress) {
+            var key = butEditPress.target
+            var siteInput = prompt('请输入你想保存的网站')
+            hash[key.id] = siteInput
+            console.log(hash)
+        }
     }
     mainWrapper.appendChild(div1)
 }
