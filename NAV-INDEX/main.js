@@ -8,9 +8,13 @@ var keys = [
 var hash = {
     q: 'qq.com'
 }
+/*从浏览器中获取用户之前保存的网站*/
+var hashGeiInLocal = localStorage.getItem('userEdit' || '')
+if(hashGeiInLocal)
+    hash = JSON.parse(hashGeiInLocal)
 
 for (var i = 0; i < keys.length; i++) {
-    rows = keys[i]
+    rows = keys[i]  /*模拟键盘的一二三排*/
     div1 = document.createElement('div')
     for (var j = 0; j < rows.length; j++) {
         kbd1 = document.createElement('kbd')
@@ -26,7 +30,9 @@ for (var i = 0; i < keys.length; i++) {
             var key = butEditPress.target
             var siteInput = prompt('请输入你想保存的网站')
             hash[key.id] = siteInput
-            console.log(hash)
+            /*将用户输入的网站保存的浏览器中*/
+            var hashInLocal = JSON.stringify(hash)
+            localStorage.setItem('userEdit',hashInLocal)
         }
     }
     mainWrapper.appendChild(div1)
