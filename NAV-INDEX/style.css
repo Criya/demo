@@ -31,3 +31,17 @@ kbd > button{
 kbd:hover > button{
     display: inline-block;
 }
+
+.kbd1{
+    width: 71px;
+    height: 69px;
+    color: #ffffff;
+    border: none;
+    font-size: 25px;
+    border-radius: 6px;
+    background-color: black;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

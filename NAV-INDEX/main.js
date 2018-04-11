@@ -9,7 +9,8 @@ var hash = {
     q: 'qq.com'
 }
 /*从浏览器中获取用户之前保存的网站*/
-var hashGeiInLocal = localStorage.getItem('userEdit' || '')
+/*null解决当浏览器没有数据时的bug*/
+var hashGeiInLocal = localStorage.getItem('userEdit' || 'null')
 if(hashGeiInLocal)
     hash = JSON.parse(hashGeiInLocal)
 
@@ -19,6 +20,7 @@ for (var i = 0; i < keys.length; i++) {
     for (var j = 0; j < rows.length; j++) {
         kbd1 = document.createElement('kbd')
         kbd1.textContent = rows[j]
+        kbd1.className = 'kbd1'
         /*添加编辑按键*/
         butEdit = document.createElement('button')
         butEdit.textContent = '编辑'
