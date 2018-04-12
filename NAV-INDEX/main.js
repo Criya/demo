@@ -6,8 +6,17 @@ var keys = [
 ]
 
 var hash = {
-    q: 'qq.com'
-}
+    q: 'qq.com',
+    w: 'zh.wikipedia.org',
+    e: 'www.ele.me',
+    z: 'zhihu.com',
+    g: 'github.com',
+    f: 'game.granbluefantasy.jp',
+    d: 'www.dilidili.wang',
+    b: 'bilibili.com',
+    t: 'taobao.com',
+    y: 'music.163.com',
+};
 /*从浏览器中获取用户之前保存的网站*/
 /*null解决当浏览器没有数据时的bug*/
 var hashGeiInLocal = localStorage.getItem('userEdit' || 'null')
@@ -17,16 +26,29 @@ if(hashGeiInLocal)
 for (var i = 0; i < keys.length; i++) {
     rows = keys[i]  /*模拟键盘的一二三排*/
     div1 = document.createElement('div')
+    div1.className = 'row'
     for (var j = 0; j < rows.length; j++) {
+        /*添加上的字母*/
         kbd1 = document.createElement('kbd')
-        kbd1.textContent = rows[j]
+        span1 = document.createElement('span')
+        span1.className = 'text'
+        span1.textContent = rows[j]
         kbd1.className = 'kbd1'
+        kbd1.appendChild(span1)
+
+        /*显示网站图标*/
+        if(hash[rows[j]]){
+            img1 = document.createElement('img')
+            img1.src = 'http://' + hash[rows[j]] + '/favicon.ico'
+            img1.className = 'icon'
+            kbd1.appendChild(img1)
+        }
+
         /*添加编辑按键*/
         butEdit = document.createElement('button')
         butEdit.textContent = '编辑'
         butEdit.id = rows[j]
         kbd1.appendChild(butEdit)
-        div1.appendChild(kbd1)
         /*实现编辑功能*/
         butEdit.onclick = function (butEditPress) {
             var key = butEditPress.target
@@ -36,6 +58,9 @@ for (var i = 0; i < keys.length; i++) {
             var hashInLocal = JSON.stringify(hash)
             localStorage.setItem('userEdit',hashInLocal)
         }
+
+
+        div1.appendChild(kbd1)
     }
     mainWrapper.appendChild(div1)
 }
