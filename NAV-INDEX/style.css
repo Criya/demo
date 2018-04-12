@@ -72,8 +72,8 @@ kbd:hover > button{
 }
 
 kbd .icon{
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     position: absolute;
     bottom: 4px;
     left: 8px;
@@ -82,7 +82,7 @@ kbd .icon{
 kbd .text{
     font-size: 22px;
     text-transform: uppercase;
-    font-family: Verdana;
+    font-family: Arial, Verdana，Sans-serif;
     position: absolute;
     top: 4px;
     left: 8px;
