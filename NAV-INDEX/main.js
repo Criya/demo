@@ -37,13 +37,15 @@ for (var i = 0; i < keys.length; i++) {
         kbd1.appendChild(span1)
 
         /*显示网站图标*/
+        img1 = document.createElement('img')
+        img1.className = 'icon'
         if(hash[rows[j]]){
-            img1 = document.createElement('img')
             img1.src = 'http://' + hash[rows[j]] + '/favicon.ico'
-            img1.className = 'icon'
-            kbd1.appendChild(img1)
+        }else{
+            img1.src = './img/point.png'
         }
 
+        kbd1.appendChild(img1)
         /*添加编辑按键*/
         butEdit = document.createElement('button')
         butEdit.textContent = '编辑'
