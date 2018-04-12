@@ -59,6 +59,10 @@ for (var i = 0; i < keys.length; i++) {
             var key = butEditPress.target
             var siteInput = prompt('请输入你想保存的网站')
             hash[key.id] = siteInput
+
+            key.previousSibling.src = 'http://' + siteInput + '/favicon.ico'
+            console.log (key.previousSibling)
+
             /*将用户输入的网站保存的浏览器中*/
             var hashInLocal = JSON.stringify(hash)
             localStorage.setItem('userEdit',hashInLocal)
