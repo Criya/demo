@@ -1,5 +1,5 @@
+/*初始化数据*/
 var HASH = init()
-
 var keys = HASH.key
 var hash = HASH.hash
 
@@ -23,7 +23,7 @@ function createKeyboard(keys, hash) {
             /*添加按键字母*/
             kbd1 = tag('kbd', {className: 'kbd1'})
             span1 = tag('span', {className: 'text', textContent: rows[j]})
-            
+
             /*显示网站图标*/
             var icon = createIcon(hash, rows[j])
 

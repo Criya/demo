@@ -1,0 +1,9 @@
+body{
+    margin: 0;
+}
+
+#eraser{
+    position: fixed;
+    bottom: 1px;
+    left: 1px;
+}
