@@ -2,8 +2,20 @@ body{
     margin: 0;
 }
 
-#eraser{
+action{
     position: fixed;
     bottom: 1px;
     left: 1px;
+}
+
+.actPaint > #paint{
+    display: none;
+}
+
+.actEra > #paint{
+    display: inline-block;
+}
+
+.actEra > #eraser{
+    display: none;
 }
