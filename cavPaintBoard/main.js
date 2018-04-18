@@ -1,5 +1,5 @@
-var cav = document.getElementById("cav")
 
+var cav = document.getElementById("cav")
 autoSetSize()
 var eraserEnable = false
 if (cav) {
@@ -14,6 +14,17 @@ if (cav) {
 
     //画刷和橡皮、颜色的监听
     listenAction()
+
+    var mo=function(e){e.preventDefault();}
+
+    /***禁止滑动***/
+
+    function stop(){
+        document.addEventListener("touchmove",mo,false);//禁止页面滑动
+
+    }
+    stop()
+
 }
 
 
