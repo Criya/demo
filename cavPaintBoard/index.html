@@ -6,17 +6,30 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body >
 <div id="paintBoard">
     <canvas id="cav">
 
     </canvas>
-    <action id="action" class="actPaint">
-        <button id="eraser">橡皮檫</button>
-        <button id="paint">画笔</button>
-    </action>
+    <div class="action">
+        <svg id="brush" class="icon active">
+            <use xlink:href="#icon-brush"></use>
+        </svg>
+        <svg id="eraser" class="icon">
+            <use xlink:href="#icon-eraser"></use>
+        </svg>
+    </div>
+
+    <div id="colorBox" class="colorBox" >
+        <ol>
+            <li id="redButton" class="red active"></li>
+            <li id="greenButton" class="green"></li>
+            <li id="blueButton" class="blue"></li>
+        </ol>
+    </div>
 
 </div>
 </body>
-<script type="text/javascript" src="main.js"></script>
+<script src="main.js"></script>
+<script src="//at.alicdn.com/t/font_633106_sz3cmcg1zc1ve7b9.js"></script>
 </html>
