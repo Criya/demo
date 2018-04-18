@@ -71,3 +71,43 @@ body {
 .colorBox .active {
     transform: scale(1.2);
 }
+
+.brushWidthBox {
+    position: fixed;
+    top: 25px;
+    right: 40px;
+}
+
+.brushWidthBox .trs{
+    transition: 0.3s;
+}
+
+
+.brushWidthBox .small {
+    /*linewidth = 2*/
+
+    width: 35px;
+    height: 0px;
+    border-top: 1px solid black;
+    margin-bottom: 15px;
+}
+
+
+.brushWidthBox .mid {
+    /*linewidth = 2*/
+
+    width: 35px;
+    height: 0px;
+    border-top: 3px solid black;
+    margin-bottom: 15px;
+}
+
+.brushWidthBox .big {
+    width: 35px;
+    height: 0px;
+    border-top: 6px solid black;
+}
+
+.brushWidthBox .active{
+    transform: scale(1.5);
+}

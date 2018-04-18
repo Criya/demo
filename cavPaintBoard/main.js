@@ -1,4 +1,3 @@
-
 var cav = document.getElementById("cav")
 autoSetSize()
 var eraserEnable = false
@@ -15,16 +14,6 @@ if (cav) {
     //画刷和橡皮、颜色的监听
     listenAction()
 
-    var mo=function(e){e.preventDefault();}
-
-    /***禁止滑动***/
-
-    function stop(){
-        document.addEventListener("touchmove",mo,false);//禁止页面滑动
-
-    }
-    stop()
-
 }
 
 
@@ -33,6 +22,18 @@ function listenUser(cav) {
 
     //触摸屏设备判断
     if ('ontouchstart' in document.body) {
+        //移动端默认滑动事件取消
+        var mo = function (e) {
+            e.preventDefault();
+        }
+
+        function stop() {
+            document.addEventListener("touchmove", mo, false);//禁止页面滑动
+
+        }
+
+        stop()
+
         cav.ontouchstart = function (ots) {
             using = true
             beginPoint = {x: ots.touches[0].clientX, y: ots.touches[0].clientY}
@@ -134,6 +135,44 @@ function listenAction() {
         ctx.strokeStyle = "blue"
     }
 
+    clear.onclick = function () {
+        ctx.clearRect(0, 0, cav.width, cav.height)
+    }
+
+    save.onclick = function () {
+        var download = document.createElement('a')
+        download.href = cav.toDataURL()
+        download.download = '我的画图'
+        document.body.appendChild(download)
+
+        download.click()
+    }
+
+}
+
+smallButton.onclick = function () {
+    ctx.lineWidth = 1
+
+    smallButton.classList.add("active")
+    midButton.classList.remove("active")
+    bigButton.classList.remove("active")
+}
+
+
+midButton.onclick = function () {
+    ctx.lineWidth = 2
+
+    midButton.classList.add("active")
+    smallButton.classList.remove("active")
+    bigButton.classList.remove("active")
+}
+
+bigButton.onclick = function () {
+    ctx.lineWidth = 5
+
+    bigButton.classList.add("active")
+    midButton.classList.remove("active")
+    smallButton.classList.remove("active")
 }
 
 //画
@@ -148,7 +187,7 @@ function draw(latestPoint) {
     }
     else {
         ctx.beginPath()
-        ctx.lineWidth = 4
+        ctx.lineWidth = ctx.lineWidth
         ctx.moveTo(beginPoint.x, beginPoint.y)
         ctx.lineTo(latestPoint.x, latestPoint.y)
         ctx.stroke()
