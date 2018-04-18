@@ -1,6 +1,5 @@
 var cav = document.getElementById("cav")
 
-
 autoSetSize()
 var eraserEnable = false
 if (cav) {
@@ -10,12 +9,17 @@ if (cav) {
     var using = false
     var beginPoint = {}
 
+    //设备动作监听
     listenUser(cav)
+
+    //画刷和橡皮、颜色的监听
     listenAction()
 }
 
-//特性检测
+
 function listenUser(cav) {
+    //特性检测
+
     //触摸屏设备判断
     if ('ontouchstart' in document.body) {
         cav.ontouchstart = function (ots) {
@@ -60,19 +64,64 @@ function listenUser(cav) {
 
 }
 
-
-//监听左下角橡皮檫和画笔按钮点击
 function listenAction() {
-    eraser.onclick = function () {
-        action.className = "actEra"
-        eraserEnable = true
-    }
+    //默认颜色
+    ctx.strokeStyle = "red"
 
-    paint.onclick = function () {
-        action.className = "actPaint"
+    //画刷和橡皮点击监听
+    brush.onclick = function () {
         eraserEnable = false
+        //激活画刷，取消橡皮
+        brush.classList.add("active")
+        eraser.classList.remove("active")
+
+        //点击画刷后恢复颜色选择
+        colorBox.classList.remove("disabled")
+
+        //默认颜色为红色
+        redButton.classList.add("active")
     }
 
+    eraser.onclick = function () {
+        eraserEnable = true
+        //激活橡皮，取消画刷
+        eraser.classList.add("active")
+        brush.classList.remove("active")
+
+
+        //将颜色激活状态取消
+        blueButton.classList.remove("active")
+        greenButton.classList.remove("active")
+        redButton.classList.remove("active")
+
+        //点击橡皮后静止点击颜色
+        colorBox.classList.add("disabled")
+    }
+
+    //颜色激活监听
+    redButton.onclick = function () {
+        redButton.classList.add("active")
+        greenButton.classList.remove("active")
+        blueButton.classList.remove("active")
+
+        ctx.strokeStyle = "red"
+    }
+
+    greenButton.onclick = function () {
+        greenButton.classList.add("active")
+        redButton.classList.remove("active")
+        blueButton.classList.remove("active")
+
+        ctx.strokeStyle = "green"
+    }
+
+    blueButton.onclick = function () {
+        blueButton.classList.add("active")
+        greenButton.classList.remove("active")
+        redButton.classList.remove("active")
+
+        ctx.strokeStyle = "blue"
+    }
 
 }
 
