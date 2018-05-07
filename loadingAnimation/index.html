@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading Animation Demo</title>
+    <style>
+        .loading {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .loading::before, .loading::after {
+            content: "";
+            width: 0;
+            height: 0;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+
+            animation: s 1.5s linear infinite;
+        }
+
+        .loading:after{
+            animation-delay: 0.75s;
+        }
+
+        @keyframes s {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 100%;
+            }
+            100% {
+                width: 50px;
+                height: 50px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="loading">
+
+</div>
+</body>
+</html>
