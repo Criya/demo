@@ -54,24 +54,17 @@
 <script>
     var n = 1,
         imgNum = $(".slideShow img").length;
-
     setInterval(()=>{
         let tmp = n
-        $(`.slideShow img:nth-child(${tmp}`).removeClass("enter")
+        $(`.slideShow img:nth-child(${tmp})`).removeClass("enter")
             .addClass("leave").one("transitionend", (e)=>{
-                console.log("now :"+tmp)
                 $(e.currentTarget).removeClass("leave").addClass("stay")
-            console.log(tmp)
-
         });
-        x();
+        if(n === imgNum)
+            n=0
         $(`.slideShow img:nth-child(${(++n)}`).removeClass("stay").addClass("enter");
 
     },3000)
 
-    function x() {
-        if(n === imgNum)
-            n=0
-    }
 </script>
 </html>
