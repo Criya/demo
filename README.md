@@ -4,4 +4,6 @@
 
 [cavPaintBoard](https://criya.github.io/demo/cavPaintBoard/index.html) :一个简单的支持手机上使用的画板
 
-[bootstrapDemo](https://criya.github.io/demo/bootstrapDemo/boostrap.html): jQuery实现的简单轮播
+[slideShowDemo](https://criya.github.io/demo/slideShowDemo/slideShow.html): jQuery实现的简单轮播
+
+[slideShowProDemo](https://criya.github.io/demo/slideShowDemo/slideShowPro.html): jQuery实现的简单无缝轮播
