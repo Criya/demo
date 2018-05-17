@@ -1,130 +1,33 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>boostrap demo</title>
-
-
-    <style>
-        .slideShowBrowser {
-            width: 500px;
-            height: 281px;
-            margin: auto;
-            position: relative;
-            overflow: hidden;
-
-        }
-
-        .slideShow {
-            display: flex;
-            align-items: center;
-            transition: transform 0.5s;
-        }
-
-        .slideShowButton {
-            margin: auto;
-            display: flex;
-            display: -webkit-box;
-            /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
-            display: -moz-box;
-            /* Firefox 17- */
-            display: -webkit-flex;
-            /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
-            display: -moz-flex;
-            /* Firefox 18+ */
-            display: -ms-flexbox;
-            /* IE 10 */
-            justify-content: center;
-            align-items: center;
-        }
-
-        .slideShowButton button.active {
-            color: blue;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="slideShowBrowser">
-        <div class="slideShow">
-            <img src="./img/1.jpg" width="500" alt="">
-            <img src="./img/2.jpg" width="500" alt="">
-            <img src="./img/3.jpg" width="500" alt="">
+<div class="info">
+    <h1>TouHou Gallery</h1>
+    <h1>SlideShow</h1>
+</div>
+<div class="wrapper">
+    <div class="window">
+        <div class="slideShowBrowser">
+            <div class="slideShow">
+                <img src="./img/1.jpg" width="500" alt="">
+                <img src="./img/2.jpg" width="500" alt="">
+                <img src="./img/3.jpg" width="500" alt="">
+            </div>
         </div>
     </div>
     <div class="slideShowButton">
-        <button id="button1">①</button>
-        <button id="button2">②</button>
-        <button id="button3">③</button>
+        <button>①</button>
+        <button>②</button>
+        <button>③</button>
     </div>
+</div>
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src="main.js"></script>
 </body>
-<!-- <script src="./jquery-3.3.1.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script>
-    let imgNum = $(".slideShowBrowser img").length
-    let offset = 0
-    var currentButtonTarget = 0;
-    for (let i = 1; i < imgNum + 1; i++) {
-        //临时保存offset值，防止使用循环结束后的offset
-        let tmp = offset;
-        $("#button" + i).on("click", (e) => {
-            $(".slideShow").css({
-                "transform": "translateX(-" + tmp + "px)",
-                "- ms - transform" : "translateX(-" + tmp + "px)",
-                "-moz - transform": "translateX(-" + tmp + "px)",
-                "-webkit - transform": "translateX(-" + tmp + "px)",
-                "-o - transform":  "translateX(-" + tmp + "px)"
-                
-                 })
-
-            //点击后按钮被激活
-            $(e.currentTarget).addClass("active")
-                .siblings(".active").removeClass("active")
-            currentButtonTarget = i - 1; //目前显示的照片，i从1开始
-        })
-        offset += 500;
-
-    }
-
-    let clickIndex = 1 //一开始时显示第二张，所以从第二张开始点击
-
-    //默认第一张图片active状态
-    $(".slideShowButton button").eq(0).trigger("click")
-
-    var slideShowLoopId = slideShowLoopStart()
-    function slideShowLoopStart() {
-        return setInterval(() => {
-
-            //控制只能往前滚一张
-            if (clickIndex - currentButtonTarget !== 1) {
-                clickIndex = currentButtonTarget + 1;
-            }
-
-            $(".slideShowButton button").eq(clickIndex % imgNum).trigger("click");
-            clickIndex++;
-
-        }, 2000)
-    }
-
-    $(".slideShowBrowser").mouseenter(() => {
-        window.clearInterval(slideShowLoopId);
-    })
-    $(".slideShow").mouseleave(() => {
-        slideShowLoopId = slideShowLoopStart();
-    })
-
-    /* $("#button1").on("click", () => $(".slideShow").css({
-        transform: "translateX(0)"
-    }))
-    $("#button2").on("click", () => $(".slideShow").css({
-        transform: "translateX(-500px)"
-    }))
-    $("#button3").on("click", () => $(".slideShow").css({
-        transform: "translateX(-1000px)"
-    }))
-
-     */
-</script>
-
 </html>
