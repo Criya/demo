@@ -6,4 +6,3 @@
 
 [slideShowDemo](https://criya.github.io/demo/slideShowDemo/slideShow.html): jQuery实现的简单轮播
 
-[slideShowProDemo](https://criya.github.io/demo/slideShowDemo/slideShowPro.html): jQuery实现的简单无缝轮播
