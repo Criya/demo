@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            width: 100%;
+            position: relative;
+        }
+
+        .item {
+            width: 280px;
+            margin: 10px 15px;
+            transition: all 0.5s;
+            position: absolute;
+        }
+
+        .h1 {
+            height: 300px;
+            background-color: #7FDBFF;
+        }
+
+        .h2 {
+            height: 450px;
+            background-color: #0074D9;
+        }
+
+        .h3 {
+            height: 600px;
+            background-color: #FFDC00;
+        }
+
+        .h4 {
+            height: 500px;
+            background-color: #01FF70
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="item h1">1</div>
+        <div class="item h4">2</div>
+        <div class="item h1">3</div>
+        <div class="item h3">4</div>
+        <div class="item h2">5</div>
+        <div class="item h4">6</div>
+        <div class="item h2 ">7</div>
+        <div class="item h1">8</div>
+        <div class="item h4 ">9</div>
+        <div class="item h4">10</div>
+        <div class="item h1">11</div>
+        <div class="item h3">12</div>
+        <div class="item h1">13</div>
+        <div class="item h2">14</div>
+        <div class="item h4">15</div>
+        <div class="item h3">16</div>
+        <div class="item h1">17</div>
+        <div class="item h4">18</div>
+        <div class="item h4 ">19</div>
+        <div class="item h1">20</div>
+        <div class="item h3 ">21</div>
+        <div class="item h2">22</div>
+        <div class="item h1">23</div>
+        <div class="item h3">24</div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        let Waterfall = (function () {
+
+            function waterFall() {
+                let colLength = parseInt($('.content').width() / $('.item').width())
+                let colArray = []
+
+                for (let i = 0; i < colLength; i++) {
+                    colArray[i] = 0
+                }
+                $('.item').each(function () {
+                    let minValue = Math.min.apply(null, colArray)
+                    let minIndex = colArray.indexOf(minValue)
+
+                    $(this).css({
+                        left: minIndex * $(this).outerWidth(true),
+                        top: colArray[minIndex]
+                    })
+
+                    colArray[minIndex] += $(this).outerHeight(true)
+                })
+            }
+
+            return {
+                init: function () {
+                    waterFall()
+                    $(window).resize(function () {
+                        waterFall();
+                    })
+                }
+            }
+        })().init()
+
+
+    </script>
+</body>
+
+</html>
