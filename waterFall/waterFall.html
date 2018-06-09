@@ -74,37 +74,60 @@
     </div>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        let Waterfall = (function () {
+       /**
+  * 瀑布流
+  *  使用方式:
+  *      const waterfall = require('Waterfall')
+  *      waterfall.init()
+  *  class:
+  *      容器: cont
+  *      物体: item
+  */
 
-            function waterFall() {
-                let colLength = parseInt($('.content').width() / $('.item').width())
-                let colArray = []
+        var Waterfall = (function () {
 
-                for (let i = 0; i < colLength; i++) {
-                    colArray[i] = 0
+            function waterfall(s) {
+
+                let $cont = $(s)
+                let $items = $cont.children()
+                //瀑布列数
+                let colNum = parseInt($(window).width() / $items.width(), 10)
+                let fallHeightArray = []
+
+                for (let i = 0; i < colNum; i++) {
+                    fallHeightArray.push(0)
                 }
-                $('.item').each(function () {
-                    let minValue = Math.min.apply(null, colArray)
-                    let minIndex = colArray.indexOf(minValue)
 
-                    $(this).css({
-                        left: minIndex * $(this).outerWidth(true),
-                        top: colArray[minIndex]
+                $items.each(function () {
+                    $cur = $(this)
+                    //寻找插入列
+                    let minHight = Math.min.apply(null, fallHeightArray)
+                    let minIndex = fallHeightArray.indexOf(minHight)
+
+                    //插入
+                    $cur.css({
+                        left: minIndex * $cur.outerWidth(true),
+                        top: fallHeightArray[minIndex]
                     })
 
-                    colArray[minIndex] += $(this).outerHeight(true)
+                    fallHeightArray[minIndex] += $cur.outerHeight(true)
+
                 })
-            }
 
+                
+            }
             return {
-                init: function () {
-                    waterFall()
-                    $(window).resize(function () {
-                        waterFall();
+                init: (s) => {
+                    waterfall(s)
+                    $(window).resize(() => {
+                        waterfall(s)
                     })
                 }
+
             }
-        })().init()
+        })().init('.content')
+
+
 
 
     </script>
